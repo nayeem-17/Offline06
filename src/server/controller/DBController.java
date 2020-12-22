@@ -17,7 +17,7 @@ public class DBController {
         this.connection = connection;
     }
 
-    public boolean updateCar(Car car) {
+    public synchronized boolean updateCar(Car car) {
         try {
             Statement statement = connection.createStatement();
             String query = "UPDATE Cars " + "SET " + " yearMade= " + car.getYearMade() + ", carMake= '"
@@ -35,7 +35,7 @@ public class DBController {
         }
     }
 
-    public boolean deleteCar(String registrationNumber) {
+    public synchronized boolean deleteCar(String registrationNumber) {
         String query = "DELETE FROM Cars WHERE " + "registrationNumber = " + "'" + registrationNumber + "'";
         System.out.println(query);
         try {
@@ -51,7 +51,7 @@ public class DBController {
 
     }
 
-    public List<User> getAllUser() {
+    public synchronized List<User> getAllUser() {
         List<User> users = new ArrayList<>();
         try {
             Statement statement = connection.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
@@ -69,7 +69,7 @@ public class DBController {
         return users;
     }
 
-    public List<Car> getAlllCar() {
+    public synchronized List<Car> getAlllCar() {
         List<Car> cars = new ArrayList<Car>();
         try {
             Statement statement = connection.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
@@ -94,7 +94,7 @@ public class DBController {
         return cars;
     }
 
-    public boolean addCar(Car car) {
+    public synchronized boolean addCar(Car car) {
         try {
             Statement statement = connection.createStatement();
             String query = "INSERT INTO cars " + "VALUES " + "( '" + car.getRegistrationNumber() + "' , "

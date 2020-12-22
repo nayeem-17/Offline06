@@ -1,6 +1,5 @@
 {
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "/home/parasite/Desktop/Offline06/**/*.jar"
+        "lib/**/*.jar"
     ]
 }

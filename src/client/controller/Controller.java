@@ -49,7 +49,7 @@ public class Controller {
     }
 
     public boolean updateCar(Car car) {
-        System.out.println("biatch");
+
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("command", "updatecar");
         JSONObject carObject = jHandler.getJSON(car);

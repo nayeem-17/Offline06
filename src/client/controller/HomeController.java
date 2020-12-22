@@ -92,6 +92,8 @@ public class HomeController {
     }
 
     public void initialize() {
+        System.out.println(main.isAdmin);
+        System.out.println(main.isLogin);
         if (main.isAdmin == true) {
             vbox.setVisible(true);
             tableview.setEditable(true);
@@ -106,7 +108,6 @@ public class HomeController {
             deleteButton.setVisible(false);
             logoutButton.setVisible(false);
         }
-
         getItems();
         regNo.setCellValueFactory(new PropertyValueFactory<Car, String>("registrationNumber"));
         yearMade.setCellValueFactory(new PropertyValueFactory<Car, Number>("yearMade"));
@@ -116,7 +117,6 @@ public class HomeController {
         price.setCellValueFactory(new PropertyValueFactory<Car, Number>("priceOfCar"));
 
         tableview.setItems(oCars);
-        tableview.setEditable(true);
 
         carmake.setCellFactory(TextFieldTableCell.forTableColumn());
         carmake.setOnEditCommit(e -> {
@@ -179,7 +179,7 @@ public class HomeController {
         deleteButton.setOnAction(e -> {
 
             int index = tableview.getSelectionModel().getSelectedIndex();
-            System.out.println("deleting at in dext " + index);
+            System.out.println("deleting at in index " + index);
             System.out.println(oCars.get(index).getRegistrationNumber());
             controller.deleteCar(oCars.get(index).getRegistrationNumber());
             oCars.remove(index);
@@ -208,7 +208,7 @@ public class HomeController {
                 alert.show();
             } else {
                 Alert alert = new Alert(AlertType.ERROR);
-                alert.setContentText("Something's wrong. Please ry again");
+                alert.setContentText("Something's wrong. Please try again");
                 alert.show();
             }
         });
