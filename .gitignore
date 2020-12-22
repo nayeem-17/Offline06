@@ -1,3 +1,2 @@
-main.db
-test.db
-lib/javafx-sdk-11.02
+*.db
+*/javafx-sdk-11.0.2
